@@ -1,34 +1,43 @@
-import React, { useState } from 'react';
-import { pizzaCart } from '../pizzas'; // Importa el array de pizzas en el carrito
+import React, { useState } from "react";
+import { pizzaCart } from "../pizzas";
+import { Button } from "react-bootstrap";
 
 const Cart = () => {
   const [cart, setCart] = useState(pizzaCart);
 
-  // Función para aumentar la cantidad de una pizza
+  // aumentar la cantidad del mismo producto:
   const increaseQuantity = (id) => {
-    setCart(cart.map(pizza => 
-      pizza.id === id ? { ...pizza, quantity: pizza.quantity + 1 } : pizza
-    ));
-  };
-
-  // Función para disminuir la cantidad de una pizza
-  const decreaseQuantity = (id) => {
-    setCart(cart
-      .map(pizza => pizza.id === id ? { ...pizza, quantity: pizza.quantity - 1 } : pizza)
-      .filter(pizza => pizza.quantity > 0) // Elimina la pizza si la cantidad es 0
+    setCart(
+      cart.map((pizza) =>
+        pizza.id === id ? { ...pizza, quantity: pizza.quantity + 1 } : pizza
+      )
     );
   };
 
-  // Calcular el total de la compra
-  const total = cart.reduce((sum, pizza) => sum + pizza.price * pizza.quantity, 0);
+  // disminuir la cantidad del mismo producto y lo elimina si es 0:
+  const decreaseQuantity = (id) => {
+    setCart(
+      cart
+        .map((pizza) =>
+          pizza.id === id ? { ...pizza, quantity: pizza.quantity - 1 } : pizza
+        )
+        .filter((pizza) => pizza.quantity > 0)
+    );
+  };
+
+  // Calcular el total de la compra:
+  const total = cart.reduce(
+    (sum, pizza) => sum + pizza.price * pizza.quantity,
+    0
+  );
 
   return (
-    <div className="cart">
-      <h1>Carrito de Compras</h1>
+    <div className="cart" style={{ margin: "24px"}}>
+      <h1 style={{ margin: "24px" }}>Carrito de Compras</h1>
       <ul>
         {cart.map((pizza) => (
           <li key={pizza.id}>
-            <img src={pizza.image} alt={pizza.name} />
+            <img src={pizza.image} alt={pizza.name} style={styles.image} />
             <h2>{pizza.name}</h2>
             <p>Precio: {pizza.price} CLP</p>
             <p>Cantidad: {pizza.quantity}</p>
@@ -38,9 +47,18 @@ const Cart = () => {
         ))}
       </ul>
       <h2>Total: {total} CLP</h2>
-      <button>Pagar</button>
+      <Button variant="dark">Pagar</Button>
     </div>
   );
+};
+
+const styles = {
+  image: {
+    width: "auto",
+    height: "200px",
+    objectFit: "cover",
+    borderRadius: "8px 8px 0px 0px",
+  },
 };
 
 export default Cart;

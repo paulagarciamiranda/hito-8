@@ -1,6 +1,6 @@
 import React from "react";
 
-const Navbar = () => {
+const MainNavbar = () => {
   const total = 25000;
   const token = false;
   return (
@@ -50,4 +50,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default MainNavbar;
