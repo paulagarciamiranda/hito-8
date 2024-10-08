@@ -3,10 +3,11 @@ import pepperoniImage from "./assets/img/pepperoni.jpg";
 import veggieImage from "./assets/img/veggie.jpeg";
 import napolitanaiImage from "./assets/img/napolitana.jpg";
 import pestoImage from "./assets/img/pesto.jpg";
+import { v4 as uuidv4 } from 'uuid';
 
 const pizzas = [
   {
-    id: Date.now,
+    id: 1,
     name: "Margarita",
     price: 8000,
     ingredients: ["🍕 Tomate", "Mozzarella", "Albahaca"],
@@ -41,7 +42,7 @@ const pizzas = [
     image: pestoImage,
   },
   {
-    id: Date.now,
+    id: 6,
     name: "Margarita",
     price: 8000,
     ingredients: ["🍕 Tomate", "Mozzarella", "Albahaca"],
@@ -50,8 +51,8 @@ const pizzas = [
 ];
 
 const pizzaCart = [
-  { id: 1, name: "Margarita", price: 8000, image: margaritaImage, quantity: 1 },
-  { id: 2, name: "Pepperoni", price: 8500, image: pepperoniImage, quantity: 2 },
+  { id: uuidv4(), name: "Margarita", price: 8000, image: margaritaImage, quantity: 1 },
+  { id: uuidv4(), name: "Pepperoni", price: 8500, image: pepperoniImage, quantity: 2 },
 ];
 
 export { pizzas, pizzaCart };
