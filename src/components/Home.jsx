@@ -1,41 +1,42 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
-import CardPizza from "./CardPizza";
-import { pizzas } from "../pizzas";
-import { Row, Col, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const Home = () => {
-  const mapPizzas = pizzas.map((pizza) => {
-    return (
-      <Col key={pizza.id} xs={12} md={6} lg={4}>
-        {" "}
-        <CardPizza pizza={pizza} />
-      </Col>
-    );
-  });
+  const [pizzas, setPizzas] = useState([]);
+
+  const url = "http://localhost:5000/api/pizzas";
+
+  const getData = async () => {
+    const response = await fetch(url);
+    const data = await response.json();
+    setPizzas(data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  /* const formattedPrice = pizza.price.toLocaleString("es-CL"); */
 
   return (
     <>
       {/* <Header /> */}
-
-      <Container fluid>
-        <h1 style={{ margin: "24px" }}>Nuestras Pizzas</h1>
-        <Row
-          className="g-4"
-          xs={1}
-          md={2}
-          lg={4}
-          style={{
-            height: "auto",
-            minHeight: "100%",
-            padding: "24px",
-            overflow: "visible",
-          }}
-        >
-          {" "}
-          {mapPizzas}
-        </Row>
-      </Container>
+      <h1 style={{ margin: "24px" }}>Nuestras Pizzas</h1>
+      <div className="pizza-cards">
+        {pizzas.map((pizza) => (
+          <div key={pizza.id} className="pizza-card">
+            <img src={pizza.img} alt={pizza.name} />
+            <h2>{pizza.name}</h2>
+            <p>Precio: ${pizza.price}</p>
+            <p>Ingredientes: {pizza.ingredients.join(", ")}</p>
+            <div className="buttons">
+              <Button variant="dark">Añadir 🛒</Button>
+              <Button variant="outline-dark">Ver más 👀</Button>
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   );
 };

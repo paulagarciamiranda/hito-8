@@ -11,6 +11,7 @@ function Footer() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          marginTop: "40px"
         }}
       >
         © 2021 - Pizzería Mamma Mia! - Todos los derechos reservados

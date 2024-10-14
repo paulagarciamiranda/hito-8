@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cart from "./components/Cart";
+import Pizza from "./components/Pizza";
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
         <Register />
         <Login />
       </div> */}
-      <Cart />
+      {/* <Cart /> */}
+      {/* <Pizza /> */}
       <Footer />
     </>
   );

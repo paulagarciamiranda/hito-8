@@ -97,3 +97,27 @@ button {
   font-weight: bold;
   border-radius: 10px;
 }
+
+.pizza-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.pizza-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  width: 400px;
+  text-align: center;
+}
+
+.pizza-card img {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
