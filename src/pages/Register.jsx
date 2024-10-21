@@ -47,7 +47,7 @@ function Register() {
   };
 
   return (
-    <div className="registro">
+    <div className="registro" style={{ minHeight:"68vh" }}>
       <h1>Crea tu cuenta</h1>
       <form className="formulario" onSubmit={validarDatos}>
         {error && <p className="error">{error}</p>}

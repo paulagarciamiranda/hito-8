@@ -38,7 +38,7 @@ function Login() {
   };
 
   return (
-    <div className="login">
+    <div className="login" style={{ minHeight:"68vh" }}>
       <h1>Login</h1>
       <form className="formulario" onSubmit={validarDatos}>
         {error && <p className="error">{error}</p>}

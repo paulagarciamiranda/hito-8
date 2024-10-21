@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const MainNavbar = () => {
   const total = 25000;
@@ -10,22 +12,32 @@ const MainNavbar = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        height: "10vh"
+        height: "10vh",
       }}
     >
       <div style={{ display: "flex", gap: "12px" }}>
         <h3>Pizzería Mamma mía!</h3>
-        <button>🍕 Home</button>
+        <Button variant="dark" to="./" as={Link}>
+          🍕 Home
+        </Button>
 
         {token ? (
           <>
-            <button>👤 Profile</button>
-            <button>🚪 Logout</button>
+            <Button variant="dark" to="/profile" as={Link}>
+              👤 Profile
+            </Button>
+            <Button variant="dark" to="/logout" as={Link}>
+              🚪 Logout
+            </Button>
           </>
         ) : (
           <>
-            <button>🔑 Login</button>
-            <button>✏️ Register</button>
+            <Button variant="dark" to="/login" as={Link}>
+              🔑 Login
+            </Button>
+            <Button variant="dark" to="/register" as={Link}>
+              ✏️ Register
+            </Button>
           </>
         )}
       </div>
@@ -36,15 +48,9 @@ const MainNavbar = () => {
           alignItems: "center",
         }}
       >
-        <button
-          style={{
-            padding: "4px 10px",
-            border: "1px solid aqua",
-            color: "aqua",
-          }}
-        >
+        <Button variant="dark" to="/cart" as={Link}>
           💰 Total: $
-        </button>
+        </Button>
       </div>
     </div>
   );
