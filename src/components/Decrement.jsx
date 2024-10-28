@@ -1,15 +1,14 @@
-import React from "react";
 import { useCart } from "../context/CartContext";
 import { Button } from "react-bootstrap";
 
-const DecrementButton = ({ productId }) => {
-  const { removeFromCart } = useCart();
-
+const Decrement = ({ pizzaId }) => {
+  const { decrementPizza } = useCart();
+  
   return (
-    <Button onClick={() => removeFromCart(productId)} variant="dark" style={{ borderRadius: "100%", height: "36px", width: "36px" }}>
+    <Button variant="dark" onClick={() => decrementPizza(pizzaId)} style={{ borderRadius: "100%", height: "36px", width: "36px" }}>
       -
     </Button>
   );
 };
 
-export default DecrementButton;
+export default Decrement;

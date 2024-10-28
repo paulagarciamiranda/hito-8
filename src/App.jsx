@@ -8,10 +8,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Cart from "./pages/Cart";
 import Logout from "./pages/Logout";
 import NotFound from "./pages/NotFound";
-import Pizza from "./pages/Pizza";
 import { Route, Routes } from "react-router-dom";
 import Profile from "./pages/Profile";
-import { CartProvider } from "./context/CartContext";
+import { CartProvider } from "./context/CartContext"
 
 function App() {
   return (
@@ -28,13 +27,6 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/404" element={<NotFound />} />
         </Routes>
-
-        {/*       <div className="ambos-formularios">
-        <Register />
-        <Login />
-      </div> */}
-        {/* <Cart /> */}
-        {/* <Pizza /> */}
         <Footer />
       </CartProvider>
     </>
