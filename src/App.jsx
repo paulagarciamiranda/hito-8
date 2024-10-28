@@ -11,29 +11,32 @@ import NotFound from "./pages/NotFound";
 import Pizza from "./pages/Pizza";
 import { Route, Routes } from "react-router-dom";
 import Profile from "./pages/Profile";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
     <>
-      <MainNavbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="/404" element={<NotFound />} />
-      </Routes>
-  
-      {/*       <div className="ambos-formularios">
+      <CartProvider>
+        <MainNavbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/404" element={<NotFound />} />
+        </Routes>
+
+        {/*       <div className="ambos-formularios">
         <Register />
         <Login />
       </div> */}
-      {/* <Cart /> */}
-      {/* <Pizza /> */}
-      <Footer />
+        {/* <Cart /> */}
+        {/* <Pizza /> */}
+        <Footer />
+      </CartProvider>
     </>
   );
 }

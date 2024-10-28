@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { Button } from "react-bootstrap";
+import Increment from "../components/Increment";
+import CartProvider from "../context/CartContext";
+import cart from "../context/CartContext";
+import Decrement from "../components/Decrement";
+import { useCart } from "../context/CartContext";
 
 const Home = () => {
+  const { cart, total } = useCart();
+
   const [pizzas, setPizzas] = useState([]);
 
   const url = "http://localhost:5000/api/pizzas";
@@ -33,6 +40,9 @@ const Home = () => {
             <div className="buttons">
               <Button variant="dark">Añadir 🛒</Button>
               <Button variant="outline-dark">Ver más 👀</Button>
+              <Increment pizza={pizza} /> {total}
+              <Decrement pizza={pizza} />
+              
             </div>
           </div>
         ))}
@@ -40,5 +50,8 @@ const Home = () => {
     </>
   );
 };
+
+console.log(pizzaCart); // Verificar el contenido del arreglo
+console.log(cart); // Verificar el estado del carrito
 
 export default Home;

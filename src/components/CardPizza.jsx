@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import AddToCartButton from "../components/Increment";
 
 const CardPizza = ({ pizza }) => {
   const formattedPrice = pizza.price.toLocaleString("es-CL");
@@ -32,7 +33,7 @@ const CardPizza = ({ pizza }) => {
           </p>
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <Button variant="outline-dark">Ver más 👀</Button>
-            <Button variant="dark">Añadir 🛒</Button>
+            <AddToCartButton pizza={pizza} /> Añadir 🛒
           </div>
         </Card.Body>
       </Card>

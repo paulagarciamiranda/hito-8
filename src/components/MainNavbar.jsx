@@ -1,10 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 const MainNavbar = () => {
-  const total = 25000;
+  const { total } = useCart();
   const token = false;
+
   return (
     <div
       style={{
@@ -49,7 +51,7 @@ const MainNavbar = () => {
         }}
       >
         <Button variant="dark" to="/cart" as={Link}>
-          💰 Total: $
+          💰 Total: ${total}
         </Button>
       </div>
     </div>
