@@ -1,11 +1,12 @@
 import React from "react";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { NavLink } from "react-router-dom";
+
 
 const MainNavbar = () => {
   const { total } = useCart();
   const token = false;
+  const activeClass = ({ isActive }) => (isActive ? "active" : "navlink-dark");
 
   return (
     <div
@@ -19,27 +20,27 @@ const MainNavbar = () => {
     >
       <div style={{ display: "flex", gap: "12px" }}>
         <h3>Pizzería Mamma mía!</h3>
-        <Button variant="dark" to="./" as={Link}>
+        <NavLink to="/" className={activeClass}>
           🍕 Home
-        </Button>
+        </NavLink>
 
         {token ? (
           <>
-            <Button variant="dark" to="/profile" as={Link}>
+            <NavLink to="/profile" className={activeClass}>
               👤 Profile
-            </Button>
-            <Button variant="dark" to="/logout" as={Link}>
+            </NavLink>
+            <NavLink to="/logout" className={activeClass}>
               🚪 Logout
-            </Button>
+            </NavLink>
           </>
         ) : (
           <>
-            <Button variant="dark" to="/login" as={Link}>
+            <NavLink to="/login" className={activeClass}>
               🔑 Login
-            </Button>
-            <Button variant="dark" to="/register" as={Link}>
+            </NavLink>
+            <NavLink to="/register" className={activeClass}>
               ✏️ Register
-            </Button>
+            </NavLink>
           </>
         )}
       </div>
@@ -50,9 +51,9 @@ const MainNavbar = () => {
           alignItems: "center",
         }}
       >
-        <Button variant="dark" to="/cart" as={Link}>
+        <NavLink to="/cart" className={activeClass}>
           💰 Total: ${total}
-        </Button>
+        </NavLink>
       </div>
     </div>
   );

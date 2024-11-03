@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
+import { useParams, Link } from "react-router-dom";
 
 const Pizza = () => {
+  const { id } = useParams();
   const [pizza, setPizza] = useState(null);
-
-  const url = "http://localhost:5000/api/pizzas/p001";
+  
+  const url = `http://localhost:5000/api/pizzas/${id}`;
 
   const getData = async () => {
     const response = await fetch(url);
@@ -14,7 +16,7 @@ const Pizza = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [id]);
 
   if (!pizza) {
     return <div>Loading...</div>;
@@ -32,7 +34,9 @@ const Pizza = () => {
         <p>{pizza.description}</p>
         <div className="buttons">
           <Button variant="dark">Añadir 🛒</Button>
-          <Button variant="outline-dark">Ver más 👀</Button>
+          <Link to={"/"}>
+              <Button variant="outline-dark">Volver</Button>
+            </Link>
         </div>
       </div>
     </div>

@@ -121,3 +121,27 @@ button {
   gap: 40px;
   justify-content: center;
 }
+
+.active {
+  color: rgb(12, 205, 205);
+  background-color: #343a40;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 2px solid rgb(12, 205, 205);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.navlink-dark {
+  background-color: #343a40;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.navlink-dark:hover {
+  background-color: #23272b;
+  color: white;
+}
