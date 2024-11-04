@@ -1,8 +1,11 @@
 import { useCart } from "../context/CartContext";
 import { Button } from "react-bootstrap";
+import { UserContext } from "../context/UserContext";
+import { useContext } from "react";
 
 const Cart = () => {
   const { cart, total, incrementPizza, decrementPizza } = useCart();
+  const { token } = useContext(UserContext);
 
   return (
     <div>
@@ -26,7 +29,7 @@ const Cart = () => {
         ))}
       </ul>
       <h3>Total: ${total}</h3>
-      <Button variant="dark">Pagar</Button>
+      <Button variant="dark" disabled={!token}>Pagar</Button>
     </div>
   );
 };
