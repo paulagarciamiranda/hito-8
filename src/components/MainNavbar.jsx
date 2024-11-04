@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useCart } from "../context/CartContext";
-import { NavLink } from "react-router-dom";
-
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { Button } from "react-bootstrap";
 
 const MainNavbar = () => {
   const { total } = useCart();
-  const token = false;
+  const { token, logout } = useContext(UserContext);
+  const navigate = useNavigate();
   const activeClass = ({ isActive }) => (isActive ? "active" : "navlink-dark");
 
   return (
@@ -29,9 +31,15 @@ const MainNavbar = () => {
             <NavLink to="/profile" className={activeClass}>
               👤 Profile
             </NavLink>
-            <NavLink to="/logout" className={activeClass}>
+            <button
+              onClick={() => {
+                logout();
+                navigate("/logout");
+              }}
+              className="navlink-dark"
+            >
               🚪 Logout
-            </NavLink>
+            </button>
           </>
         ) : (
           <>
