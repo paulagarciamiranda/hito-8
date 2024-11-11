@@ -17,9 +17,10 @@ import UserProvider, { UserContext } from "./context/UserContext";
 
 function App() {
   const { token } = useContext(UserContext);
-
+console.log(token)
   return (
-    <>
+    <UserProvider>
+      {" "}
       <CartProvider>
         <MainNavbar />
         <Routes>
@@ -28,10 +29,7 @@ function App() {
             path="/profile"
             element={token ? <Profile /> : <Navigate to="/login" />}
           />
-          <Route
-            path="/logout"
-            element={<Logout />}
-          />
+          <Route path="/logout" element={<Logout />} />
           <Route
             path="/login"
             element={token ? <Navigate to="/" /> : <Login />}
@@ -47,7 +45,7 @@ function App() {
         </Routes>
         <Footer />
       </CartProvider>
-    </>
+    </UserProvider>
   );
 }
 

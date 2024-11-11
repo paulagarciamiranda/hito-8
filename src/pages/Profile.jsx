@@ -1,13 +1,22 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 function Profile() {
+  const { email, getProfile, token } = useContext(UserContext);
+
+  useEffect(() => {
+    if (token) {
+    /*   getProfile(token);  */// Llama a getProfile si el usuario tiene un token
+    }
+  }, [token, getProfile]);
+
   return (
-    <div style={{ minHeight:"68vh" }}>
+    <div style={{ minHeight: "68vh" }}>
       <h1>Perfil</h1>
       <h3>Bienvenid@</h3>
-      <p>Email: nombre@ejemplo.com</p>
+      <p>Email: {email || "No disponible"}</p>
       <ul>
         <li>Datos de envío</li>
         <li>Medios de pago</li>
@@ -23,4 +32,5 @@ function Profile() {
     </div>
   );
 }
+
 export default Profile;

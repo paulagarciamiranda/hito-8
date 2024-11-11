@@ -6,6 +6,7 @@ import { isValidEmail } from "../utils/validators/email.validate.js";
 
 const login = async (req, res) => {
   try {
+   
     const { email = "", password = "" } = req.body;
 
     if (!email.trim() || !password.trim()) {
@@ -23,8 +24,9 @@ const login = async (req, res) => {
     }
 
     const user = await authModel.getUserByEmail(email);
-
+   
     if (!user) {
+     
       return res.status(400).json({ error: "User not found" });
     }
 
